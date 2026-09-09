@@ -138,7 +138,7 @@ public class ResonanceTests
     }
 
     // Taken as an unordered set, the five conjunction points do sit close to
-    // 72 deg apart — but only close. The gaps alternate 71.0 / 73.4, and that
+    // 72 deg apart — but only close. Three gaps are 71.04 and two are 73.44, and that
     // asymmetry is the same 2.4-day residual seen from a different angle: the
     // pentagram precesses instead of closing on itself.
     [Fact]

@@ -102,9 +102,9 @@ straight-edge construction of a five-pointed star, which is why Venus traces a
 pentagram and not a pentagon.
 
 It does not quite close. Sorted, the five conjunction longitudes sit at 0°, 71.04°,
-142.08°, 215.52°, 286.56°, so the gaps alternate **71.04° / 73.44°** — a spread of
-2.39°. That asymmetry is the 2.43-day residual from the table at the top, seen from
-a different direction: the star precesses slowly rather than repeating.
+142.08°, 215.52°, 286.56°, giving **three gaps of 71.04° and two of 73.44°** — a
+spread of 2.39°. That asymmetry is the 2.43-day residual from the table at the top,
+seen from a different direction: the star precesses slowly rather than repeating.
 
 ### The calendars
 
@@ -166,8 +166,9 @@ The two design decisions I would defend in an interview:
 
 ## What is here and what is not
 
-**Here:** the 51 C# files I wrote, the package manifest, and `sim/` — a standalone,
-tested, dependency-free reimplementation of the orbital and calendrical math.
+**Here:** the 52 C# files I wrote (51 runtime scripts plus one editor tool), the
+package manifest, and `sim/` — a standalone, tested, dependency-free
+reimplementation of the orbital and calendrical math.
 
 **Not here:** the art. The Unity project depends on roughly 13 GB of licensed Asset
 Store content — Maya architecture, skyboxes, planet models, particle systems, audio.
@@ -175,9 +176,11 @@ None of that is mine to redistribute, so **cloning this repo will not give you a
 openable Unity project.** The scripts are the deliverable, and `sim/` is the part
 built to actually run.
 
-There is no third-party SDK dependency here — the manifest is stock Unity XR plus
-`whisper.unity`. What blocks a full open-and-play repo is asset licensing, not code
-licensing.
+There is no proprietary SDK dependency here — the manifest is stock Unity XR plus
+`whisper.unity`, which is pulled in by a purchased captioning asset to generate
+caption timings from voiceover audio at edit time. None of my code calls it; it is
+in the manifest because the tool that uses it was in the project. What blocks a
+full open-and-play repo is asset licensing, not code licensing.
 
 ## Stack
 
@@ -191,7 +194,8 @@ sim/                     standalone math core — run this
   src/MayaSynodic/         SynodicPeriod, RationalApproximation, Tzolkin, CalendarRound
   src/MayaSynodic.Cli/     prints the full derivation
   tests/                   44 xUnit tests
-unity/Assets/Scripts/    the 51 C# files I authored
+unity/Assets/Scripts/    51 runtime C# files I authored
+unity/Assets/Editor/     1 editor tool I authored
 unity/Packages/          manifest, to show what the project depends on
 docs/architecture.md     how the scene systems fit together
 ```

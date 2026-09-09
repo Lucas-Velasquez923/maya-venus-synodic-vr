@@ -13,10 +13,13 @@ Assets/Plugins/Editor/JetBrains*
 .consulo/
 
 # ── Unity/IDE project files (regenerated on open) ────────────────────────────
-*.csproj
-*.unityproj
-*.sln
-*.slnx
+# Scoped to unity/ on purpose. A blanket *.csproj / *.sln here also swallows
+# sim/'s hand-written project files, which are the build definition for the
+# runnable half of this repo — without them a fresh clone cannot compile.
+unity/**/*.csproj
+unity/**/*.unityproj
+unity/**/*.sln
+unity/**/*.slnx
 *.suo
 *.tmp
 *.user
