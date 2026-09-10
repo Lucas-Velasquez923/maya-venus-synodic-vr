@@ -45,9 +45,8 @@ Angular rates subtract, so the interval between successive Venus–Earth conjunc
 $$\frac{1}{S} = \frac{1}{T_v} - \frac{1}{T_e} \qquad\Longrightarrow\qquad S = \frac{T_v T_e}{T_e - T_v} = 583.92\ \text{days}$$
 
 The Dresden Codex Venus table uses **584 days** — an integer, off by 0.076 days per
-cycle. The Maya were not rounding carelessly; they were choosing an integer that
-keeps the table commensurate with the 365-day Haab', and they built correction
-tables to absorb the residue.
+cycle. That integer keeps the table commensurate with the 365-day Haab', and the
+codex carries correction tables to absorb the residue.
 
 ### Why the ratio is 13/8
 
@@ -74,8 +73,7 @@ $$\frac{T_e}{T_v} = 1.625520\ldots = [1; 1, 1, 1, 2, 29, \ldots]$$
 `13/8` is a convergent, and the term after it is **29** — an unusually large
 partial quotient, which means the next convergent needs a denominator ~30× bigger
 to improve on it. Eighths are the last cheap grid before accuracy gets expensive.
-That is the whole justification for the constant, and it is checked by a test
-rather than asserted in a comment.
+That is the whole justification for the constant, and it is checked by a test.
 
 ### What the quantisation costs, and what it buys
 
@@ -91,8 +89,7 @@ The two are optimising different objectives. The codex is fitting the *sky*, so 
 minimises per-cycle error. The simulation is fitting an *animation loop* that has to
 return to its starting configuration on screen, so it minimises drift over five
 cycles and accepts a six-times-worse period to get exact closure. The Maya's number
-is the better astronomy; the quantised one is the better animation. Saying so is
-more interesting than the flattering version.
+is the better astronomy; the quantised one is the better animation.
 
 ### The pentagram
 
@@ -153,16 +150,15 @@ Every `.cs` file in `unity/Assets/` is mine. The pieces worth naming:
 | **Scene orchestration** | `SolarSystemSceneManager.cs`, `TempleIntroSequencer.cs`, `SceneFadeLoader.cs`, `FadeIn.cs` | Sequencing, fades, and transitions between the seven scenes. |
 | **Mini-game** | `SnakeMoveUP.cs`, `SnakeTimer.cs`, `SnakeTriggerArea.cs`, `SnakeMiniGameManager.cs` | A timed interaction sequence in the jungle scene. |
 
-The two design decisions I would defend in an interview:
+Two design decisions worth naming:
 
 1. **Analytic orbits over physics.** Positions are computed from
    `(angle, radius)` every frame instead of integrated. The cycle takes the same
    wall-clock time and ends in the same configuration regardless of frame rate,
    which is what makes the "five cycles = eight years" claim demonstrable rather
    than approximate.
-2. **Quantising the ratio to 13/8.** Documented above — a deliberate accuracy
-   sacrifice in exchange for exact loop closure, with the cost measured rather than
-   hand-waved.
+2. **Quantising the ratio to 13/8.** See *What the quantisation costs, and what it
+   buys* above.
 
 ## What is here and what is not
 
@@ -173,14 +169,13 @@ reimplementation of the orbital and calendrical math.
 **Not here:** the art. The Unity project depends on roughly 13 GB of licensed Asset
 Store content — Maya architecture, skyboxes, planet models, particle systems, audio.
 None of that is mine to redistribute, so **cloning this repo will not give you an
-openable Unity project.** The scripts are the deliverable, and `sim/` is the part
-built to actually run.
+openable Unity project.**
 
 There is no proprietary SDK dependency here — the manifest is stock Unity XR plus
 `whisper.unity`, which is pulled in by a purchased captioning asset to generate
 caption timings from voiceover audio at edit time. None of my code calls it; it is
-in the manifest because the tool that uses it was in the project. What blocks a
-full open-and-play repo is asset licensing, not code licensing.
+in the manifest because the tool that uses it was in the project. The limitation
+is asset licensing, not code licensing.
 
 ## Stack
 
@@ -205,4 +200,4 @@ docs/architecture.md     how the scene systems fit together
 `sim/` runs anywhere with a .NET SDK — see the top of this README.
 
 The Unity half does not run standalone; it is source from a deployed project whose
-art dependencies are licensed and not redistributable. Read it, don't clone it.
+art dependencies are licensed and not redistributable.
